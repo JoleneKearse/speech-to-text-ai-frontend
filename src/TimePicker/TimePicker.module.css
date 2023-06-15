@@ -1,0 +1,24 @@
+.timePickerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--gap-sm);
+}
+
+.selectLabel {
+  display: flex;
+  justify-content: center;
+  gap: var(--gap-med);
+}
+
+.reactSelectContainer {
+  display: flex;
+  justify-content: center;
+  gap: var(--gap-sm);
+  max-height: 5em;
+}
+
+.smallText {
+  margin-bottom: 1em;
+  font-size: .75rem;
+}
