@@ -82,10 +82,9 @@ const TranscriptionPage = () => {
       formData.append("startTime", timeToMinutesAndSeconds(startTime));
       formData.append("endTime", timeToMinutesAndSeconds(endTime));
 
-      const speech_to_text_backend_url =
-        "https://speech-to-text-ai-backend.onrender.com";
+      const backendUrl = process.env.speech_to_text_backend_url;
       const response = await axios.post(
-        `${speech_to_text_backend_url}/api/transcribe`,
+        `${backendUrl}/api/transcribe`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
