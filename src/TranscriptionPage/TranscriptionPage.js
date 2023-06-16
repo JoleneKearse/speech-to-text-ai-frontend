@@ -2,7 +2,7 @@ import React, { useState, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import axios from "axios";
 import TimePicker from "../TimePicker/TimePicker";
-import { toast, ToastContainer, Zoom } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import styles from "./TranscriptionPage.module.css";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -100,7 +100,6 @@ const TranscriptionPage = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        transition: "Zoom",
       });
     } catch (error) {
       toast.error("An error occured during transcription.", {
@@ -111,7 +110,6 @@ const TranscriptionPage = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        transtion: "Zoom",
       });
     } finally {
       setUploading(false);
@@ -158,12 +156,10 @@ const TranscriptionPage = () => {
           maxDuration={audioDuration || Infinity}
         />
       </div>
-      {uploading && (
-        <p className={styles.centeredText}>Uploading & transcribing...</p>
-      )}
+      {uploading && <p className="centeredText">Uploading & transcribing...</p>}
       {transcription && (
         <div>
-          <h2 className={styles.centeredText}>Transcription</h2>
+          <h2 className="centeredText">Transcription</h2>
           <p>{transcription}</p>
         </div>
       )}
