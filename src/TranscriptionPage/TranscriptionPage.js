@@ -2,8 +2,9 @@ import React, { useState, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import axios from "axios";
 import TimePicker from "../TimePicker/TimePicker";
-import { toast, ToastContainer } from "react-toastify";
+import { toast, ToastContainer, Zoom } from "react-toastify";
 import styles from "./TranscriptionPage.module.css";
+import "react-toastify/dist/ReactToastify.css";
 
 // helper functions to convert time to seconds
 const timeToSeconds = (time) => {
@@ -91,9 +92,27 @@ const TranscriptionPage = () => {
         }
       );
       setTranscription(response.data.transcription);
-      toast.success("Transcription successful.");
+      toast.success("Transcription successful.", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        transition: "Zoom",
+      });
     } catch (error) {
-      toast.error("An error occured during transcription.");
+      toast.error("An error occured during transcription.", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        transtion: "Zoom",
+      });
     } finally {
       setUploading(false);
     }
@@ -139,7 +158,9 @@ const TranscriptionPage = () => {
           maxDuration={audioDuration || Infinity}
         />
       </div>
-      {uploading && <p>Uploading & transcribing...</p>}
+      {uploading && (
+        <p className={styles.centeredText}>Uploading & transcribing...</p>
+      )}
       {transcription && (
         <div>
           <h2 className={styles.centeredText}>Transcription</h2>
